@@ -35,7 +35,7 @@ namespace ServiceLayer.Services
         public void Register(RegisterDto registerDto, string link)
         {
             var message = new MimeMessage();
-            message.From.Add(new MailboxAddress("MYMALL", "infomymall95@gmail.com"));
+            message.From.Add(new MailboxAddress("TaskGov", "taskov044@gmail.com"));
             message.To.Add(new MailboxAddress(registerDto.FullName, registerDto.Email));
             message.Subject = "Confirm Email";
             string emailbody = string.Empty;
@@ -50,7 +50,7 @@ namespace ServiceLayer.Services
 
             using var smtp = new SmtpClient();
             smtp.Connect("smtp.gmail.com", 587, SecureSocketOptions.StartTls);
-            smtp.Authenticate("infomymall95@gmail.com", "ctbtavsbosmqznhv");
+            smtp.Authenticate("taskov044@gmail.com", "qebdahsubbkhcnwt");
             smtp.Send(message);
             smtp.Disconnect(true);
         }
@@ -71,7 +71,7 @@ namespace ServiceLayer.Services
 
             var message = new MimeMessage();
 
-            message.From.Add(new MailboxAddress("MYMALL", "infomymall95@gmail.com"));
+            message.From.Add(new MailboxAddress("TaskGov", "taskov044@gmail.com"));
 
             message.To.Add(new MailboxAddress("", email));
 
@@ -88,7 +88,7 @@ namespace ServiceLayer.Services
 
             using var smtp = new SmtpClient();
             smtp.Connect("smtp.gmail.com", 587, SecureSocketOptions.StartTls);
-            smtp.Authenticate("infomymall95@gmail.com", "ctbtavsbosmqznhv");
+            smtp.Authenticate("taskov044@gmail.com", "qebdahsubbkhcnwt");
             smtp.Send(message);
             smtp.Disconnect(true);
 
@@ -99,7 +99,7 @@ namespace ServiceLayer.Services
 
             var message = new MimeMessage();
 
-            message.From.Add(new MailboxAddress("MYMALL", "infomymall95@gmail.com"));
+            message.From.Add(new MailboxAddress("TaskGov", "taskov044@gmail.com"));
 
             message.To.Add(new MailboxAddress(user.FullName, forgotPassword.Email));
             message.Subject = "Reset Password";
@@ -120,7 +120,7 @@ namespace ServiceLayer.Services
             using var smtp = new SmtpClient();
 
             smtp.Connect("smtp.gmail.com", 587, SecureSocketOptions.StartTls);
-            smtp.Authenticate("infomymall95@gmail.com", "ctbtavsbosmqznhv");
+            smtp.Authenticate("taskov044@gmail.com", "qebdahsubbkhcnwt");
             smtp.Send(message);
             smtp.Disconnect(true);
 

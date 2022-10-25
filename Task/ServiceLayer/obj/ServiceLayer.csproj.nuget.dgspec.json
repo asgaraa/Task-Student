@@ -187,9 +187,6 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\hp\\Desktop\\task\\Task\\DomainLayer\\DomainLayer.csproj": {
-                "projectPath": "C:\\Users\\hp\\Desktop\\task\\Task\\DomainLayer\\DomainLayer.csproj"
-              },
               "C:\\Users\\hp\\Desktop\\task\\Task\\RepositoryLayer\\RepositoryLayer.csproj": {
                 "projectPath": "C:\\Users\\hp\\Desktop\\task\\Task\\RepositoryLayer\\RepositoryLayer.csproj"
               }
@@ -213,10 +210,6 @@
             "MailKit": {
               "target": "Package",
               "version": "[3.4.2, )"
-            },
-            "Microsoft.AspNetCore.Hosting": {
-              "target": "Package",
-              "version": "[2.2.7, )"
             },
             "Microsoft.AspNetCore.Routing.Abstractions": {
               "target": "Package",

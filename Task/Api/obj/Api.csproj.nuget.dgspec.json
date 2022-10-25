@@ -57,6 +57,10 @@
               "target": "Package",
               "version": "[12.0.0, )"
             },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[6.0.10, )"
+            },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
@@ -76,6 +80,10 @@
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.2.3, )"
+            },
+            "Swashbuckle.AspNetCore.Filters": {
+              "target": "Package",
+              "version": "[7.0.5, )"
             }
           },
           "imports": [
@@ -284,9 +292,6 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\hp\\Desktop\\task\\Task\\DomainLayer\\DomainLayer.csproj": {
-                "projectPath": "C:\\Users\\hp\\Desktop\\task\\Task\\DomainLayer\\DomainLayer.csproj"
-              },
               "C:\\Users\\hp\\Desktop\\task\\Task\\RepositoryLayer\\RepositoryLayer.csproj": {
                 "projectPath": "C:\\Users\\hp\\Desktop\\task\\Task\\RepositoryLayer\\RepositoryLayer.csproj"
               }
@@ -310,10 +315,6 @@
             "MailKit": {
               "target": "Package",
               "version": "[3.4.2, )"
-            },
-            "Microsoft.AspNetCore.Hosting": {
-              "target": "Package",
-              "version": "[2.2.7, )"
             },
             "Microsoft.AspNetCore.Routing.Abstractions": {
               "target": "Package",

@@ -16,6 +16,8 @@ namespace ServiceLayer.Services.Interfaces
         Task<string> Login(LoginDto loginDto);
         Task ConfirmEmail(string userId, string token);
         Task<UserDto> GetUserByEmailAsync(string email);
-     
+        //Task<List<UserDto>> GetAllUsers();
+        //Task ChangeRole(string Id);
+        //Task<IList<string>> GetUserRoles(string email);
     }
 }
