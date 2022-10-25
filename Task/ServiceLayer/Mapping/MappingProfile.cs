@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using DomainLayer.Entities;
+using ServiceLayer.DTOs.AppUser;
 using ServiceLayer.DTOs.Student;
 using ServiceLayer.DTOs.StudentDetail;
 using System;
@@ -18,7 +19,11 @@ namespace ServiceLayer.Mapping
         public MappingProfile()
         {
 
-          
+            CreateMap<AppUser, RegisterDto>().ReverseMap();
+
+            CreateMap<UserDto, AppUser>().ReverseMap();
+            CreateMap<AppUser, UpdateUserDto>().ReverseMap();
+            CreateMap<AppUser, UpdatePasswordDto>().ReverseMap();
             CreateMap<Student, StudentDto>().ReverseMap();
             CreateMap<Student, StudentEditDto>().ReverseMap();
             CreateMap<StudentDetail, StudentDetailDto>().ReverseMap();
