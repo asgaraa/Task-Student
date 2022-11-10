@@ -22,15 +22,14 @@ namespace ServiceLayer.Services
         {
             var claims = new List<Claim>
             {
-            new Claim(JwtRegisteredClaimNames.Sub, Id),
-              new Claim(JwtRegisteredClaimNames.Sub, email),
-            new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-            new Claim(ClaimTypes.NameIdentifier,Id)
+                new Claim(JwtRegisteredClaimNames.Sub, Id),
+                new Claim(JwtRegisteredClaimNames.Sub, email),
+              //  new Claim(ClaimTypes.NameIdentifier,Id)
             };
 
             roles.ForEach(role =>
             {
-                claims.Add(new Claim(ClaimTypes.Role, role));
+                claims.Add(new Claim(JwtRegisteredClaimNames.Sub, role));
             });
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
@@ -40,9 +39,9 @@ namespace ServiceLayer.Services
             var token = new JwtSecurityToken(
                 _configuration["Jwt:Audience"],
                 _configuration["Jwt:Issuer"],
-                claims,
-                expires: expires,
-                signingCredentials: creds
+                claims
+                //expires: expires,
+                //signingCredentials: creds
             );
 
             return new JwtSecurityTokenHandler().WriteToken(token);

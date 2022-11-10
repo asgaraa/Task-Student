@@ -13,7 +13,13 @@ namespace DomainLayer.Configurations
     {
         public void Configure(EntityTypeBuilder<StudentDetail> builder)
         {
-            //builder.Property(m => m.Name).IsRequired();
+            builder.Property(m => m.Address).IsRequired();
+            builder.Property(m => m.Phone).IsRequired();
+            builder.Property(m => m.Email).IsRequired();
+            builder.Property(m => m.StudentId).IsRequired();
+
+
+
 
 
         }

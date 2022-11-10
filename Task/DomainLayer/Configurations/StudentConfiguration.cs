@@ -15,6 +15,8 @@ namespace DomainLayer.Configurations
         {
             builder.Property(m => m.FirstName).IsRequired();
             builder.Property(m => m.LastName).IsRequired();
+         
+
 
         }
     }

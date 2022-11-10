@@ -24,7 +24,9 @@ namespace Api.Controllers
         [Authorize(Roles = "SuperAdmin,Admin")]
         public async Task<IActionResult> Create([FromBody] StudentDto studentDto)
         {
-            await _service.CreateAsync(studentDto);
+            var UserId = this.User.FindFirstValue(ClaimTypes.NameIdentifier).ToString();
+            studentDto.UserId = UserId;
+            await _service.CreateAsync( studentDto);
             return Ok();
         }
 
