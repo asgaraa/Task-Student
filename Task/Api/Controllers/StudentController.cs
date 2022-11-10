@@ -1,8 +1,11 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ServiceLayer.DTOs.Student;
 using ServiceLayer.DTOs.StudentDetail;
 using ServiceLayer.Services.Interfaces;
+using System.Data;
+using System.Security.Claims;
 
 namespace Api.Controllers
 {
@@ -10,6 +13,7 @@ namespace Api.Controllers
     public class StudentController : BaseController
     {
         private readonly IStudentService _service;
+        
         public StudentController(IStudentService service)
         {
             _service = service;
@@ -17,6 +21,7 @@ namespace Api.Controllers
 
         [HttpPost]
         [Route("CreateStudent")]
+        [Authorize(Roles = "SuperAdmin,Admin")]
         public async Task<IActionResult> Create([FromBody] StudentDto studentDto)
         {
             await _service.CreateAsync(studentDto);
@@ -26,6 +31,7 @@ namespace Api.Controllers
 
         [HttpDelete]
         [Route("DeleteStudent/{id}")]
+        [Authorize(Roles = "SuperAdmin,Admin")]
         public async Task<IActionResult> Delete([FromRoute] int id)
         {
             await _service.DeleteAsync(id);
@@ -34,6 +40,7 @@ namespace Api.Controllers
         }
         [HttpPut]
         [Route("UpdateStudent")]
+        [Authorize(Roles = "SuperAdmin,Admin")]
         public async Task<IActionResult> Update([FromBody] StudentEditDto studenEditDto)
         {
             await _service.UpdateAsync(studenEditDto.Id, studenEditDto);
@@ -50,10 +57,27 @@ namespace Api.Controllers
 
         [HttpGet]
         [Route("GetAllStudents")]
+        [Authorize(Roles = "SuperAdmin,Admin")]
         public async Task<IActionResult> GetAll()
         {
-            var result = await _service.GetAllAsync();
-            return Ok(result);
+            var UserId = this.User.FindFirstValue(ClaimTypes.NameIdentifier).ToString();
+            var identity = this.HttpContext.User.Identities.FirstOrDefault();
+            var role = identity.Claims.FirstOrDefault(
+             c => c.Type == ClaimTypes.Role)?.Value;
+            if (role == "SuperAdmin")
+            {
+                var result = await _service.GetAllAsync();
+                return Ok(result);
+            }
+            else
+            {
+                var result = await _service.GetAllWithAdminAsync(UserId);
+                return Ok(result);
+                
+            }
+            
+
+
         }
     }
 }

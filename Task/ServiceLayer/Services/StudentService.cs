@@ -40,6 +40,14 @@ namespace ServiceLayer.Services
             var res = _mapper.Map<List<StudentDto>>(model);
             return res;
         }
+        public async Task<List<StudentDto>> GetAllWithAdminAsync(string userId)
+        {
+
+            var model = await _repository.GetAllAdminWithAsync( userId);
+            var res = _mapper.Map<List<StudentDto>>(model);
+                return res;
+            
+        }
 
         public async Task<StudentDto> GetAsync(int id)
         {
@@ -56,5 +64,7 @@ namespace ServiceLayer.Services
 
             await _repository.UpdateAsync(entity);
         }
+        
+        
     }
 }

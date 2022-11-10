@@ -19,11 +19,9 @@ namespace RepositoryLayer.Repositories
             entities = context.Set<StudentDetail>();
         }
 
-        public async Task<StudentDetail> GetStudentById(int id)
+        public async Task<List<StudentDetail>> GetStudentById(int id)
         {
-            StudentDetail entity = await entities.FirstOrDefaultAsync(m => m.StudentId == id);
-            if (entity is null) throw new NullReferenceException();
-            return entity;
+            return await entities.Where(x => x.StudentId == id).ToListAsync();
         }
     }
 }

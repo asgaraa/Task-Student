@@ -1,7 +1,9 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ServiceLayer.DTOs.StudentDetail;
 using ServiceLayer.Services.Interfaces;
+using System.Data;
 
 namespace Api.Controllers
 {
@@ -16,6 +18,7 @@ namespace Api.Controllers
 
         [HttpPost]
         [Route("CreateStudentDetail")]
+        [Authorize(Roles = "SuperAdmin")]
         public async Task<IActionResult> Create([FromBody] StudentDetailDto studentDetailDto)
         {
             await _service.CreateAsync(studentDetailDto);
@@ -25,6 +28,7 @@ namespace Api.Controllers
 
         [HttpDelete]
         [Route("DeleteStudentDetail/{id}")]
+        [Authorize(Roles = "SuperAdmin")]
         public async Task<IActionResult> Delete([FromRoute] int id)
         {
             await _service.DeleteAsync(id);
@@ -33,6 +37,7 @@ namespace Api.Controllers
         }
         [HttpPut]
         [Route("UpdateStudentDetail")]
+        [Authorize(Roles = "SuperAdmin")]
         public async Task<IActionResult> Update([FromBody] StudentDetailEditDto studenDetailEditDto)
         {
             await _service.UpdateAsync(studenDetailEditDto.Id, studenDetailEditDto);
@@ -47,13 +52,13 @@ namespace Api.Controllers
             return Ok(result);
         }
 
-        [HttpGet]
-        [Route("GetAllStudentDetails")]
-        public async Task<IActionResult> GetAll()
-        {
-            var result = await _service.GetAllAsync();
-            return Ok(result);
-        }
+        //[HttpGet]
+        //[Route("GetAllStudentDetails")]
+        //public async Task<IActionResult> GetAll()
+        //{
+        //    var result = await _service.GetAllAsync();
+        //    return Ok(result);
+        //}
         [HttpGet]
         [Route("GetStudentById/{id}")]
         public async Task<IActionResult> GetStudentById([FromRoute] int id)

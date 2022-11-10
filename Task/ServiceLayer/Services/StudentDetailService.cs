@@ -49,10 +49,10 @@ namespace ServiceLayer.Services
             return res;
         }
 
-        public async Task<StudentDetailDto> GetStudentByIdAsync(int id)
+        public async Task<List<StudentDetailDto>> GetStudentByIdAsync(int id)
         {
             var model = await _repository.GetStudentById(id);
-            var res = _mapper.Map<StudentDetailDto>(model);
+            var res = _mapper.Map<List<StudentDetailDto>>(model);
             return res;
         }
 

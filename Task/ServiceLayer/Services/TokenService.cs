@@ -18,14 +18,14 @@ namespace ServiceLayer.Services
         {
             _configuration = configuration;
         }
-        public string GenerateJwtToken(string email, string username, List<string> roles)
+        public string GenerateJwtToken(string Id, string email, string username, List<string> roles)
         {
             var claims = new List<Claim>
             {
-            new Claim(JwtRegisteredClaimNames.Sub, username),
+            new Claim(JwtRegisteredClaimNames.Sub, Id),
               new Claim(JwtRegisteredClaimNames.Sub, email),
             new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-            new Claim(ClaimTypes.NameIdentifier, username)
+            new Claim(ClaimTypes.NameIdentifier,Id)
             };
 
             roles.ForEach(role =>

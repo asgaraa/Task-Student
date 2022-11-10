@@ -40,7 +40,7 @@ namespace ServiceLayer.Services
 
             var roles = await _userManager.GetRolesAsync(user);
 
-            string token = _tokenService.GenerateJwtToken(user.Email, user.UserName, (List<string>)roles);
+            string token = _tokenService.GenerateJwtToken(user.Id, user.Email, user.UserName, (List<string>)roles);
 
             return token;
         }

@@ -11,6 +11,6 @@ namespace RepositoryLayer.Repositories.Interfaces
 {
     public interface IStudentDetailRepository : IRepository<StudentDetail>
     {
-        Task<StudentDetail> GetStudentById(int id);
+        Task<List<StudentDetail>> GetStudentById(int id);
     }
 }

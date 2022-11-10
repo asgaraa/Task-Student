@@ -113,6 +113,10 @@ namespace RepositoryLayer.Migrations
                     b.Property<bool>("SoftDelete")
                         .HasColumnType("bit");
 
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id");
 
                     b.ToTable("Student");

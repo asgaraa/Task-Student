@@ -15,6 +15,8 @@ namespace ServiceLayer.Services.Interfaces
         Task DeleteAsync(int id);
         Task<List<StudentDetailDto>> GetAllAsync();
         Task<StudentDetailDto> GetAsync(int id);
-        Task<StudentDetailDto> GetStudentByIdAsync(int id);
+        Task<List<StudentDetailDto>> GetStudentByIdAsync(int id);
+
+
     }
 }
