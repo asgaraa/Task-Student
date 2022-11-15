@@ -13,23 +13,24 @@ namespace Api.Controllers
     public class StudentController : BaseController
     {
         private readonly IStudentService _service;
-        
+    
         public StudentController(IStudentService service)
         {
             _service = service;
+           
         }
+       
 
         [HttpPost]
         [Route("CreateStudent")]
-        [Authorize(Roles = "SuperAdmin,Admin")]
+        [Authorize(Roles = "SuperAdmin")]
         public async Task<IActionResult> Create([FromBody] StudentDto studentDto)
         {
-            var UserId = this.User.FindFirstValue(ClaimTypes.NameIdentifier).ToString();
-            studentDto.UserId = UserId;
+           
             await _service.CreateAsync( studentDto);
             return Ok();
         }
-
+ 
 
         [HttpDelete]
         [Route("DeleteStudent/{id}")]

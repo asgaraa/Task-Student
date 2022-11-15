@@ -15,16 +15,21 @@ namespace ServiceLayer.Services
     public class StudentService : IStudentService
     {
         private readonly IStudentRepository _repository;
+        private readonly IUserDetailService _userDetail;
         private readonly IMapper _mapper;
-        public StudentService(IStudentRepository repository, IMapper mapper)
+        public StudentService(IStudentRepository repository, IMapper mapper, IUserDetailService userDetail)
         {
             _repository = repository;
             _mapper = mapper;
+            _userDetail = userDetail;
         }
 
         public async Task CreateAsync(StudentDto studentDto)
         {
+            var userid = _userDetail.GetUserId();
+           
             var model = _mapper.Map<Student>(studentDto);
+            model.UserId = userid.Id;
             await _repository.CreateAsync(model);
         }
 

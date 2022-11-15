@@ -3,6 +3,7 @@ using DomainLayer.Entities;
 using ServiceLayer.DTOs.AppUser;
 using ServiceLayer.DTOs.Student;
 using ServiceLayer.DTOs.StudentDetail;
+using ServiceLayer.DTOs.UserDetail;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -23,6 +24,8 @@ namespace ServiceLayer.Mapping
 
             CreateMap<UserDto, AppUser>().ReverseMap();
             CreateMap<AppUser, UpdateUserDto>().ReverseMap();
+            CreateMap<AppUser, UserDetailDto>().ReverseMap();
+            CreateMap<AppUser, UserIdDto>().ReverseMap();
             CreateMap<AppUser, UpdatePasswordDto>().ReverseMap();
             CreateMap<Student, StudentDto>().ReverseMap();
             CreateMap<Student, StudentEditDto>().ReverseMap();

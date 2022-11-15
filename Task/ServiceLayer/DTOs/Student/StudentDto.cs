@@ -14,6 +14,6 @@ namespace ServiceLayer.DTOs.Student
         public string FirstName { get; set; }
         [Required(ErrorMessage = "LastName is required.")]
         public string LastName { get; set; }
-        public string UserId { get; set; }
+        //public string UserId { get; set; }
     }
 }
