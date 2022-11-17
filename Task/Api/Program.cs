@@ -83,7 +83,11 @@ builder.Services.AddAutoMapper(typeof(MappingProfile));
 
 builder.Services.AddRepositoryLayer();
 builder.Services.AddServiceLayer();
-builder.Services.AddTransient<ITokenService, TokenService>(); ;
+builder.Services.AddTransient<ITokenService, TokenService>();
+//builder.Services.AddScoped<ITokenService, TokenService>();
+//builder.Services.AddSingleton<ITokenService, TokenService>();
+
+
 builder.Services.AddSwaggerGen(options =>
 {
 
@@ -111,7 +115,7 @@ if (true)
 
 app.UseHttpsRedirection();
 
-//Reference: Javid Bashirov
+
 app.UseCors(x => x
    .AllowAnyOrigin()
    .AllowAnyMethod()

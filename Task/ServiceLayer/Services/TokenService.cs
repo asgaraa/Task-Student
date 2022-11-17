@@ -27,7 +27,7 @@ namespace ServiceLayer.Services
               //  new Claim(ClaimTypes.NameIdentifier,Id)
             };
 
-            roles.ForEach(role =>
+            roles.ForEach(role =>  
             {
                 claims.Add(new Claim(ClaimTypes.Role, role));
             });
@@ -35,6 +35,10 @@ namespace ServiceLayer.Services
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
             var expires = DateTime.UtcNow.AddDays(1);
+           // var expires = DateTime.UtcNow.AddSeconds(2);
+            
+
+
 
             var token = new JwtSecurityToken(
                 _configuration["Jwt:Audience"],

@@ -9,9 +9,18 @@ namespace ServiceLayer.Services
 {
     public class DateTimeService : IDateTimeService
     {
+        private DateTime _dateTime;
+        public DateTime dateTime;
+        public DateTimeService()
+        {
+
+            _dateTime = DateTime.Now;
+
+            _dateTime = dateTime;
+        }
         public DateTime GetCurrentDateTime()
         {
-            return DateTime.Now;
+            return dateTime;
         }
     }
    
